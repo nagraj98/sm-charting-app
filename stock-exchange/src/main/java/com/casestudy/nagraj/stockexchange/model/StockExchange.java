@@ -1,6 +1,16 @@
-package com.casestudy.nagraj.model;
+package com.casestudy.nagraj.stockexchange.model;
 
-public class StockExchangeDto {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class StockExchange {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	
 	private String exchangeId;
 	private String name;
@@ -9,12 +19,13 @@ public class StockExchangeDto {
 	private String remarks;
 	
 	
-	public StockExchangeDto() {
+	public StockExchange() {
 		super();
 	}
 
-	public StockExchangeDto(String exchangeId, String name, String brief, String contactAddress, String remarks) {
+	public StockExchange(Integer id, String exchangeId, String name, String brief, String contactAddress, String remarks) {
 		super();
+		this.id = id;
 		this.exchangeId = exchangeId;
 		this.name = name;
 		this.brief = brief;
@@ -22,6 +33,13 @@ public class StockExchangeDto {
 		this.remarks = remarks;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getExchangeId() {
 		return exchangeId;
@@ -63,4 +81,5 @@ public class StockExchangeDto {
 		this.remarks = remarks;
 	}
 
+	
 }
