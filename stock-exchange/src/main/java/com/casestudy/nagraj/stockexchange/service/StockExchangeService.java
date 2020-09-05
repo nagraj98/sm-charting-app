@@ -12,7 +12,7 @@ import com.casestudy.nagraj.stockexchange.repo.StockExchangeRepository;
 @Service
 public interface StockExchangeService {
 	
-	public List<StockExchangeDto> showAllExhanges();
+	public Iterable<StockExchangeDto> showAllExhanges();
 	public StockExchangeDto addExchange(StockExchangeDto exchangeDto);
 	public void removeExchange(StockExchangeDto exchangeDto);	
 

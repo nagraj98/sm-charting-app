@@ -8,4 +8,5 @@ import com.casestudy.nagraj.stockexchange.model.StockExchange;
 @Repository
 public interface StockExchangeRepository extends JpaRepository<StockExchange, Integer>{
 
+	Iterable<StockExchange> findByName(String name);
 }

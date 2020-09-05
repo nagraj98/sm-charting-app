@@ -23,22 +23,26 @@ public class StockExchangeServiceImpl implements StockExchangeService {
 	private ModelMapper mapper;
 
 	@Override
-	public List<StockExchangeDto> showAllExhanges() {
+	public Iterable<StockExchangeDto> showAllExhanges() {
+		//mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		Type target = new TypeToken<List<StockExchangeDto>>(){}.getType();
 		return mapper.map(stockExchangeRepo.findAll(), target);
 	}
 
 	@Override
 	public StockExchangeDto addExchange(StockExchangeDto exchangeDto) {
-		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+		//mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		stockExchangeRepo.save(mapper.map(exchangeDto , StockExchange.class));
 		return exchangeDto;
 	}
 
 	@Override
 	public void removeExchange(StockExchangeDto exchangeDto) {
+		//mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		stockExchangeRepo.delete(mapper.map(exchangeDto , StockExchange.class));
 	}
+
+
 	
 
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,12 +32,19 @@ public class StockExchangeController {
 	@GetMapping("/showall")
 	public ResponseEntity<List<StockExchangeDto>> showAllExchanges()
 	{
-		return new ResponseEntity<List<StockExchangeDto>>(stockExchangeService.showAllExhanges(), HttpStatus.FOUND);
+		return new ResponseEntity<List<StockExchangeDto>>((List<StockExchangeDto>)stockExchangeService.showAllExhanges(), HttpStatus.FOUND);
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<StockExchangeDto> addNewExchange(StockExchangeDto exchangeDto)
+	public ResponseEntity<StockExchangeDto> addNewExchange(@RequestBody StockExchangeDto exchangeDto)
 	{
 		return new ResponseEntity<StockExchangeDto> (stockExchangeService.addExchange(exchangeDto),HttpStatus.CREATED);
+	}
+	
+    // method to get list of all companies on this stock exchange.
+	
+	public void deleteExchange(@RequestBody StockExchangeDto exchangeDto)
+	{
+		stockExchangeService.removeExchange(exchangeDto);
 	}
 }
